@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: billing_postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-billing_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-billing_password}
+      POSTGRES_DB: ${DB_NAME:-billing_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-billing_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - billing_network
+
+  # API Server
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    container_name: billing_api
+    environment:
+      - DATABASE_URL=postgresql://${DB_USER:-billing_user}:${DB_PASSWORD:-billing_password}@postgres:5432/${DB_NAME:-billing_db}
+      - NODE_ENV=development
+      - PORT=3001
+      - JWT_SECRET=${JWT_SECRET:-your-secret-key-change-in-production}
+      - CORS_ORIGIN=http://localhost:3000
+    ports:
+      - "3001:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./apps/api/src:/app/src
+    networks:
+      - billing_network
+    command: npm run dev
+
+  # Frontend Server (Next.js)
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile.web
+    container_name: billing_web
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    volumes:
+      - ./app:/app/app
+      - ./components:/app/components
+      - ./lib:/app/lib
+      - ./styles:/app/styles
+      - ./hooks:/app/hooks
+    networks:
+      - billing_network
+    command: npm run dev
+
+volumes:
+  postgres_data:
+
+networks:
+  billing_network:
+    driver: bridge
