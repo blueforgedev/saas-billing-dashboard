@@ -28,6 +28,7 @@ A modern, feature-rich billing and subscription management dashboard built with 
 ## ✨ Features
 
 ### Dashboard Components
+
 - **Overview Dashboard** - Real-time metrics, revenue tracking, and subscription analytics
 - **Analytics** - Comprehensive revenue trends and performance metrics
 - **Subscriptions** - Manage subscription plans and customer subscriptions
@@ -40,6 +41,7 @@ A modern, feature-rich billing and subscription management dashboard built with 
 - **Help** - Support and documentation
 
 ### UI Features
+
 - 🌓 **Dark/Light Mode** - Full theme support with system preference detection
 - 📱 **Responsive Design** - Mobile-first approach, works on all devices
 - ♿ **Accessibility** - WCAG 2.1 AA compliant components
@@ -53,22 +55,26 @@ A modern, feature-rich billing and subscription management dashboard built with 
 ## 🛠 Tech Stack
 
 ### Frontend Framework
+
 - **Next.js 16.1.6** - React framework with App Router and Server Components
 - **React 19** - UI library
 - **TypeScript 5.3** - Type-safe development
 
 ### UI & Styling
+
 - **TailwindCSS 3.x** - Utility-first CSS framework
 - **Shadcn UI** - High-quality, accessible React components
 - **Radix UI** - Unstyled, accessible component primitives
 - **Lucide React** - Beautiful icon library
 
 ### Data & Charts
+
 - **Recharts** - React charting library
 - **date-fns** - Modern date utility library
 - **Zod** - TypeScript-first schema validation
 
 ### Development Tools
+
 - **pnpm** - Fast, disk space efficient package manager
 - **ESLint** - Code quality and style enforcement
 - **Prettier** - Code formatting
@@ -140,6 +146,7 @@ saas-ui-dashboard/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - **Node.js 18+** - Download from [nodejs.org](https://nodejs.org/)
 - **pnpm 8+** - Install with `npm install -g pnpm`
 - **Git** - For version control
@@ -147,22 +154,26 @@ saas-ui-dashboard/
 ### Installation
 
 1. **Clone the repository**
+
 ```bash
 git clone <your-github-url>
 cd saas-ui-dashboard
 ```
 
 2. **Install dependencies**
+
 ```bash
 pnpm install
 ```
 
 3. **Set up environment variables**
+
 ```bash
 cp .env.example .env.local
 ```
 
 4. **Update `.env.local`**
+
 ```env
 # API Configuration
 NEXT_PUBLIC_API_URL=http://localhost:3001
@@ -173,12 +184,13 @@ NEXTAUTH_SECRET=your-secret-key-here
 ```
 
 5. **Start the development server**
+
 ```bash
 pnpm run dev
 ```
 
 6. **Open in browser**
-Navigate to [http://localhost:3000](http://localhost:3000)
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ---
 
@@ -219,13 +231,13 @@ NEXTAUTH_SECRET=your-secret-key-change-in-production
 
 ### Environment Variables Reference
 
-| Variable | Type | Description | Default |
-|----------|------|-------------|---------|
-| `NEXT_PUBLIC_API_URL` | String | Backend API endpoint | `http://localhost:3001` |
-| `NEXT_PUBLIC_THEME_DEFAULT` | String | Default theme (light/dark) | `dark` |
-| `NEXT_PUBLIC_ANALYTICS_ID` | String | Analytics tracking ID | `` |
-| `NEXTAUTH_URL` | String | NextAuth callback URL | `http://localhost:3000` |
-| `NEXTAUTH_SECRET` | String | Secret for NextAuth JWT | `` |
+| Variable                    | Type   | Description                | Default                 |
+| --------------------------- | ------ | -------------------------- | ----------------------- |
+| `NEXT_PUBLIC_API_URL`       | String | Backend API endpoint       | `http://localhost:3001` |
+| `NEXT_PUBLIC_THEME_DEFAULT` | String | Default theme (light/dark) | `dark`                  |
+| `NEXT_PUBLIC_ANALYTICS_ID`  | String | Analytics tracking ID      | ``                      |
+| `NEXTAUTH_URL`              | String | NextAuth callback URL      | `http://localhost:3000` |
+| `NEXTAUTH_SECRET`           | String | Secret for NextAuth JWT    | ``                      |
 
 ---
 
@@ -236,18 +248,21 @@ The frontend is designed to work with the Express.js backend API running on `htt
 ### API Endpoints Reference
 
 #### Authentication
+
 - `POST /api/v1/auth/register` - Register new user
 - `POST /api/v1/auth/login` - Login user
 - `POST /api/v1/auth/refresh` - Refresh access token
 - `GET /api/v1/auth/me` - Get current user
 
 #### Users
+
 - `GET /api/v1/users/:id` - Get user by ID
 - `PUT /api/v1/users/:id` - Update user profile
 - `DELETE /api/v1/users/:id` - Delete user
 - `GET /api/v1/users` - List all users (admin only)
 
 #### (Coming Soon)
+
 - Subscriptions API
 - Invoices API
 - Customers API
@@ -302,8 +317,8 @@ The project includes 40+ pre-built components:
 ### Using Components
 
 ```tsx
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export function MyComponent() {
   return (
@@ -319,9 +334,7 @@ export function MyComponent() {
 All components can be customized via Tailwind CSS classes:
 
 ```tsx
-<Button 
-  className="px-8 py-4 bg-blue-600 hover:bg-blue-700"
->
+<Button className="px-8 py-4 bg-blue-600 hover:bg-blue-700">
   Custom Button
 </Button>
 ```
@@ -331,6 +344,7 @@ All components can be customized via Tailwind CSS classes:
 ## 👨‍💻 Development Guidelines
 
 ### Code Style
+
 - **TypeScript**: Use strict mode, avoid `any` type
 - **Components**: Functional components with hooks
 - **Naming**: camelCase for files/functions, PascalCase for components
@@ -357,6 +371,7 @@ export function MyComponent({ title, children }: MyComponentProps) {
 ```
 
 ### Styling Best Practices
+
 - Use TailwindCSS utility classes
 - Create reusable component variants
 - Use CSS modules for complex styling only
@@ -365,17 +380,20 @@ export function MyComponent({ title, children }: MyComponentProps) {
 ### Git Workflow
 
 1. **Create a feature branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
 
 2. **Make your changes** and commit
+
    ```bash
    git add .
    git commit -m "feat: add new feature"
    ```
 
 3. **Push to branch**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -387,6 +405,7 @@ export function MyComponent({ title, children }: MyComponentProps) {
 ## 🚢 Deployment
 
 ### Build for Production
+
 ```bash
 pnpm run build
 ```
@@ -394,6 +413,7 @@ pnpm run build
 ### Deploy to Vercel (Recommended)
 
 1. **Push to GitHub**
+
 ```bash
 git add .
 git commit -m "Initial commit"
@@ -410,12 +430,14 @@ git push origin main
 ### Deploy to Other Platforms
 
 #### Docker
+
 ```bash
 docker build -f Dockerfile.web -t saas-dashboard .
 docker run -p 3000:3000 saas-dashboard
 ```
 
 #### Self-hosted
+
 ```bash
 pnpm run build
 pnpm run start

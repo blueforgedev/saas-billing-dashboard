@@ -50,6 +50,7 @@ Visit `https://github.com/YOUR_USERNAME/saas-billing-dashboard` to see your code
 Your initial commit includes:
 
 ### Frontend (Next.js)
+
 - ✅ Dashboard shell with navigation
 - ✅ 10+ page components (Overview, Analytics, Subscriptions, etc.)
 - ✅ 40+ Shadcn UI components
@@ -59,6 +60,7 @@ Your initial commit includes:
 - ✅ TypeScript configuration
 
 ### Backend (Express.js)
+
 - ✅ Express.js API server
 - ✅ Prisma ORM with SQLite database
 - ✅ JWT authentication service
@@ -68,6 +70,7 @@ Your initial commit includes:
 - ✅ Zod validation schemas
 
 ### Configuration
+
 - ✅ Environment variables setup
 - ✅ TypeScript configuration
 - ✅ TailwindCSS styling
@@ -80,6 +83,7 @@ Your initial commit includes:
 ## 🚀 After Pushing to GitHub
 
 ### 1. Enable GitHub Features
+
 - **Settings** → **Pages** → Deploy from `main` branch (for static sites)
 - **Settings** → **Secrets and variables** → Add environment variables
 - **Settings** → **Branches** → Protect `main` branch (require PR reviews)
@@ -100,29 +104,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [18.x, 20.x]
-    
+
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-      
+          cache: "pnpm"
+
       - name: Install pnpm
         run: npm install -g pnpm
-      
+
       - name: Install dependencies
         run: pnpm install
-      
+
       - name: Run linter
         run: pnpm run lint
-      
+
       - name: Build project
         run: pnpm run build
 ```
@@ -172,6 +176,7 @@ Follow semantic commit messages:
 - `chore:` - Build process, dependencies
 
 Examples:
+
 ```
 feat: add subscription management API
 fix: resolve authentication token expiry issue
@@ -224,17 +229,20 @@ git push -f origin main
 ## 🆘 Troubleshooting
 
 ### Remote already exists
+
 ```bash
 git remote remove origin
 git remote add origin https://github.com/YOUR_USERNAME/saas-billing-dashboard.git
 ```
 
 ### Authentication failed
+
 - Use GitHub Personal Access Token instead of password
 - [Create token](https://github.com/settings/tokens)
 - Use token as password when prompted
 
 ### Large files rejected
+
 ```bash
 # Remove large files
 git rm --cached large-file.zip
@@ -249,6 +257,7 @@ git push -f origin main
 ## ✨ Ready to Deploy?
 
 Once on GitHub, you can deploy to:
+
 - **Vercel** - Best for Next.js (auto-deploys on push)
 - **GitHub Pages** - For static exports
 - **Netlify** - Git-connected hosting
